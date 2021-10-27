@@ -1,1 +1,0 @@
-  clock.tick(30)

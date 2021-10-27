@@ -13,6 +13,9 @@ rectY = height/2
 purpleRectX = 100
 purpleRectY = 400
 
+counterCollider = 0
+fontScore = pygame.font.SysFont('Arial', 20, True, True)
+
 screen = pygame.display.set_mode((width, height))
 pygame.display.set_caption('Jogão')
 clock = pygame.time.Clock()
@@ -20,6 +23,8 @@ clock = pygame.time.Clock()
 while True:
   clock.tick(30)
   screen.fill((0,0,0))
+  scoreText = f'Colliders: {counterCollider}'
+  scoreRendered = fontScore.render(scoreText, True, (240, 240, 240))
   for event in pygame.event.get():
     if event.type == QUIT:
       pygame.quit()
@@ -40,4 +45,7 @@ while True:
     if redRect.colliderect(purpleRect):
       purpleRectX = randint(40, 600)
       purpleRectY = randint(50, 430)
+      counterCollider += 1
+
+    screen.blit(scoreRendered, (500, 40))
     pygame.display.update()

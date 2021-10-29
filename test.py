@@ -5,6 +5,11 @@ from random import randint
 
 pygame.init()
 
+pygame.mixer.music.set_volume(0.1)
+backgroundMusic = pygame.mixer.music.load("./audio-media/backSound.wav")
+pygame.mixer.music.play(-1)
+collisionMusic = pygame.mixer.Sound('./audio-media/colisao.wav')
+
 width = 640
 height = 480
 
@@ -46,6 +51,7 @@ while True:
       purpleRectX = randint(40, 600)
       purpleRectY = randint(50, 430)
       counterCollider += 1
+      pygame.mixer.Sound.play(collisionMusic)
 
     screen.blit(scoreRendered, (500, 40))
     pygame.display.update()
